@@ -1,0 +1,14 @@
+.NavigationBar{
+    z-index: 1;
+    background-color: #f3f3f3;
+}
+
+.Footer {
+    background-color: #f3f3f3;
+    font-display: flex;
+    text-align: center; 
+}
+
+.FooterContent {
+    margin: auto;
+}
