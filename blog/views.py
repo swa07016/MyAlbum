@@ -3,7 +3,8 @@ from django.utils import timezone
 from .models import Card
 # Create your views here.
 def home(request):
-    return render(request, 'home.html')
+    cards = Card.objects
+    return render(request, 'home.html', {'cards' : cards})
 
 def add(request):
     card = Card()
