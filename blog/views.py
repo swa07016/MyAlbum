@@ -10,8 +10,10 @@ def add(request):
     card = Card()
     card.title = request.POST['title']
     card.description = request.POST['description']
-    card.writer = '정성훈'
+    card.writer = request.user.get_username()
     card.image = request.FILES['image']
     card.date = timezone.datetime.now()
     card.save()
     return redirect('/')
+
+
