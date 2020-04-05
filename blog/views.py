@@ -3,7 +3,7 @@ from django.utils import timezone
 from .models import Card
 # Create your views here.
 def home(request):
-    cards = Card.objects
+    cards = Card.objects.order_by('-date')
     return render(request, 'home.html', {'cards' : cards})
 
 def add(request):
@@ -16,4 +16,8 @@ def add(request):
     card.save()
     return redirect('/')
 
-
+def delete(request):
+    #print(request.POST['cardid'])
+    card = Card.objects.get(id=request.POST['cardid'])
+    card.delete()
+    return redirect('/')

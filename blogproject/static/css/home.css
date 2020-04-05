@@ -54,7 +54,8 @@ html, body {
 
 .Card{
     margin: 1.2em;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19); 
+    /* box-shadow: 12px 12px 7px rgba(0, 0, 0, 0.7); */
 }
 
 .thumbnail { 
@@ -72,7 +73,7 @@ html, body {
     height: auto; 
 }
 
-.hover_animation {
+/* .hover_animation {
     -webkit-transform:scale(1);
     -moz-transform:scale(1);
     -ms-transform:scale(1); 
@@ -90,7 +91,7 @@ html, body {
     -ms-transform:scale(1.05);   
     -o-transform:scale(1.05);
     transform:scale(1.05);
-}
+} */
 
 .modalImg {
     top: 0; 
@@ -100,4 +101,48 @@ html, body {
     max-width: 100%; 
     width:100%;
     height: auto; 
+}
+
+.hoverOpacity:hover {
+    opacity:0.5;
+}
+
+
+
+
+.swing {
+    animation: swing ease-in-out 0.8s infinite alternate;
+    transform-origin: center -20px;
+    /* float:left; */
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+}
+.swing img {
+    /* border: 5px solid #f8f8f8; */
+    display: block;
+}
+.swing:after{
+    content: '';
+    position: absolute;  
+    width: 20px; height: 18px;  
+    border: 1px solid #999;
+    top: -15px; left: 50%;
+    z-index: 0;
+    border-bottom: none;
+    border-right: none;
+    transform: rotate(45deg);
+}
+/* nail */
+.swing:before{
+    content: '';
+    position: absolute;
+    width: 5px; height: 5px;
+    top: -19.2px;left: 51.7%;
+    z-index: 5;
+    border-radius: 50% 50%;
+    background: #000;
+}
+ 
+@keyframes swing {
+    0% { transform: rotate(1.5deg); }
+    100% { transform: rotate(-1.5deg); }
 }

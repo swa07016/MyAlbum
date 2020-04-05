@@ -65,7 +65,7 @@
             <div class="row">
                 {% for card in cards.all %}
                 <div class="col-sm-3">
-                    <div class="card Card hover_animation" data-toggle="modal" data-target="#cardModal{{card.writer}}{{card.date.microsecond}}">
+                    <div class="card Card hover_animation swing hoverOpacity" style="border: 5px solid #262b57" data-toggle="modal" data-target="#cardModal{{card.writer}}{{card.date.microsecond}}">
                         <div class="thumbnail">
                             <img class="card-img-top img-responsive cardImg"
                                 src="{{card.image.url}}"
@@ -90,13 +90,21 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <img class="modalImg" src="{{card.image.url}}">
+                                <img class="modalImg rounded" style="border: 5px solid #262b57" src="{{card.image.url}}">
                                 <br><br>
                                 <p>{{card.description}}</p>                                
                                 <p align="right">{{card.date}}, {{card.writer}}</p>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-danger">Delete</button>
+                                
+                                
+                                {% if user.get_username == card.writer %}
+                                    <form method="POST" action="{% url 'delete' %}">
+                                        {% csrf_token %}
+                                        <button type="submit" name="cardid" value="{{card.id}}" class="btn btn-danger">Delete</button>
+                                    </form>
+                                {% endif %}
+                                
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                             </div>
                         </div>
